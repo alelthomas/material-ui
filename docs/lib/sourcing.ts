@@ -37,6 +37,8 @@ const ALLOWED_TAGS = [
   'Developer Survey',
   'Guide',
   'Product',
+  'Case Study',
+  'Customer',
   // Product tags
   'Material UI',
   'Base UI',
@@ -45,6 +47,16 @@ const ALLOWED_TAGS = [
   'MUI X',
   'Toolpad',
 ];
+
+export const getCaseStudies = () => {
+  const filePaths = getBlogFilePaths();
+
+  const caseStudies = filePaths
+    .map((name) => getBlogPost(name))
+    .filter((post) => post.slug.includes('case-study'));
+
+  return caseStudies;
+};
 
 export const getAllBlogPosts = () => {
   const filePaths = getBlogFilePaths();
