@@ -2,7 +2,6 @@ import * as React from 'react';
 import Typography from 'docs/src/pages/premium-themes/onepirate/modules/components/Typography';
 import dynamic from 'next/dynamic';
 import Box from '@mui/material/Box';
-import { alpha } from '@mui/material/styles';
 import SectionHeadline from '../typography/SectionHeadline';
 import GradientText from '../typography/GradientText';
 
@@ -11,11 +10,7 @@ const CustomerQuotes = dynamic(() => import('./CustomerQuotes'));
 export default function CustomersTestimonials() {
   return (
     <Box
-      data-mui-color-scheme="dark"
       sx={(theme) => ({
-        background: `linear-gradient(180deg, ${alpha(theme.palette.primaryDark[800], 0.8)}2%, ${
-          theme.palette.primaryDark[900]
-        } 80%), ${theme.palette.primaryDark[900]}`,
         display: 'grid',
         m: 0,
         p: 12,

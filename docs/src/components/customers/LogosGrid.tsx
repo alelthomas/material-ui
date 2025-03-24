@@ -233,6 +233,7 @@ export default function LogosGrid({ data = [] }: { data?: Array<CustomerData> })
             objectFit: 'contain',
             p: 4,
             gap: 1,
+            textDecoration: 'none',
             borderRadius: '12px',
             boxShadow: '0 4px 12px rgba(170, 180, 190, 0.2)',
             cursor: imgProps.hasCaseStudy ? 'pointer' : 'default',
@@ -251,7 +252,18 @@ export default function LogosGrid({ data = [] }: { data?: Array<CustomerData> })
           }}
           size={{ xs: 6, sm: 4, md: 2 }}
         >
-          <IconImage alt={imgProps.alt} loading="eager" {...imgProps} />
+          <IconImage 
+            alt={imgProps.alt} 
+            loading="eager" 
+            {...imgProps} 
+            sx={{
+              filter: 'grayscale(100%) brightness(0)',
+              ...theme.applyDarkStyles({
+                filter: 'grayscale(100%) brightness(0) invert(1)',
+              }),
+              ...imgProps.style
+            }}
+          />
           {imgProps.hasCaseStudy && (
             <Typography
               variant="body2"
@@ -259,7 +271,7 @@ export default function LogosGrid({ data = [] }: { data?: Array<CustomerData> })
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 0,
+                gap: 0
               }}
             >
               Read more

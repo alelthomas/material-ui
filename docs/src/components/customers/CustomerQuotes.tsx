@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -103,6 +102,9 @@ function Data({
     company?: React.ReactElement<unknown>;
   };
 }) {
+  const isFirstColumn = profile.gridArea === 'one';
+  const isLastColumn = profile.gridArea === 'four';
+
   return (
     <Box
       sx={{
@@ -111,28 +113,61 @@ function Data({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        color: '#FFF',
+        color: 'text.primary',
+        border: '1px solid',
+        borderColor: 'divider',
+        backgroundColor: 'background.paper',
+        '&:hover': {
+          backgroundColor: 'action.hover',
+        },
+        gap: 2,
       }}
     >
-      <Box sx={{ ml: '0 ' }}>{profile.company}</Box>
-      <Typography variant="body1" sx={{ mb: 2, color: 'grey.200' }}>
-        {quote}
-      </Typography>
-      <Box sx={{ ml: 'auto ' }}>
-        <Avatar
-          src={profile.avatarSrc}
-          srcSet={profile.avatarSrcSet}
-          alt={`${profile.name}'s profile picture`}
-        />
+      <Box>{profile.company}</Box>
+      <Box sx={{ 
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 2,
+      }}>
+        <Typography 
+          variant="body1" 
+          sx={{ 
+            color: 'text.secondary',
+            width: '100%',
+          }}
+        >
+          {quote}
+        </Typography>
+        <Box sx={{ 
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: 2,
+        }}>
+          <div>
+            <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
+              {profile.name}
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              {profile.role}
+            </Typography>
+          </div>
+          <Avatar
+            src={profile.avatarSrc}
+            srcSet={profile.avatarSrcSet}
+            sx={{
+              border: '3px solid #004d99',
+              outline: '1px solid',
+              outlineColor: 'primary.main',
+              boxShadow: 1,
+              width: { xs: 40, md: isFirstColumn || isLastColumn ? 48 : 40 },
+              height: { xs: 40, md: isFirstColumn || isLastColumn ? 48 : 40 },
+            }}
+            alt={`${profile.name}'s profile picture`}
+          />
+        </Box>
       </Box>
-      <div>
-        <Typography variant="body2" sx={{ mt: 1 }}>
-          {profile.name}
-        </Typography>
-        <Typography variant="body2" sx={{ mt: 0 }}>
-          {profile.role}
-        </Typography>
-      </div>
     </Box>
   );
 }
@@ -143,16 +178,35 @@ export default function CustomerQuotes() {
       sx={(theme) => ({
         display: 'grid',
         gap: 0,
-        gridTemplateColumns: '3fr 3fr 3fr',
-        gridTemplateRows: '50% 50%',
-        gridTemplateAreas: `
-          'one two four'
-          'one three four'
-        `,
-        backgroundColor: 'rgba(255,255,255,0.01)',
-        border: '1px solid',
-        borderColor: 'divider',
-        borderRadius: 1,
+        gridTemplateColumns: {
+          xs: '1fr',
+          sm: '1fr 1fr',
+          md: '3fr 3fr 3fr',
+        },
+        gridTemplateRows: {
+          xs: 'auto',
+          sm: 'auto',
+          md: '50% 50%',
+        },
+        gridTemplateAreas: {
+          xs: `
+            'one'
+            'two'
+            'three'
+            'four'
+          `,
+          sm: `
+            'one two'
+            'three four'
+          `,
+          md: `
+            'one two four'
+            'one three four'
+          `,
+        },
+        borderRadius: "10px",
+        overflow: "hidden",
+        backgroundColor: 'background.default',
       })}
     >
       {QUOTES.map((item) => (

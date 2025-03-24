@@ -6,10 +6,7 @@ import { Link } from '@mui/docs/Link';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import SectionHeadline from '../typography/SectionHeadline';
-import GradientText from '../typography/GradientText';
 
 interface SpotlightProps {
   posts: BlogPost[];
@@ -23,6 +20,7 @@ function Spotlight({ posts }: SpotlightProps) {
         sx={{
           display: 'grid',
           mt: 2,
+          mb: 12,
           p: 0,
           gap: 2,
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
