@@ -1,6 +1,6 @@
 import Section from 'docs/src/layouts/Section';
 import * as React from 'react';
-import Typography from 'docs/src/pages/premium-themes/onepirate/modules/components/Typography';
+import Typography from '@mui/material/Typography';
 import SectionHeadline from '../typography/SectionHeadline';
 import GradientText from '../typography/GradientText';
 
@@ -11,12 +11,10 @@ export default function CustomersHero() {
         alwaysCenter
         overline="Customers"
         title={
-          <Typography variant="h1" component="h1">
-            Meet the
-            <GradientText>&nbsp;teams</GradientText>
+          <Typography variant="h1" component="h1" sx={{ mb: 2 }}>
+            Meet the <GradientText color="primary">teams</GradientText>
             <br />
-            powered by
-            <GradientText>&nbsp;MUI</GradientText>
+            powered by <GradientText color="primary">MUI</GradientText>
           </Typography>
         }
         description="See how MUI's comprehensive suite of UI tools helps them ship better and faster"

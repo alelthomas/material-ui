@@ -17,23 +17,12 @@ interface SpotlightProps {
 
 function Spotlight({ posts }: SpotlightProps) {
   return (
-    <Container sx={{ mt: 10 }}>
-      <SectionHeadline
-        alwaysCenter
-        overline="Explore our products"
-        title={
-          <Typography variant="h2" component="h2">
-            MUI&apos;s comprehensive suite of UI tools <br /> helps you
-            <GradientText>&nbsp; ship better and faster</GradientText>
-          </Typography>
-        }
-      />
+    <Container>
       <Box
         component="ul"
         sx={{
           display: 'grid',
           mt: 2,
-          mb: 2,
           p: 0,
           gap: 2,
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',

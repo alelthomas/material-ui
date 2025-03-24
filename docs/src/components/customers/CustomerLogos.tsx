@@ -3,40 +3,96 @@ import dynamic from 'next/dynamic';
 import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
 import Section from 'docs/src/layouts/Section';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import {
-  CORE_CUSTOMERS,
-  ADVANCED_CUSTOMERS,
-  DESIGNKITS_CUSTOMERS,
-  TEMPLATES_CUSTOMERS,
-} from './LogosGrid';
+  MATERIAL_UI_CUSTOMERS,
+  BASE_UI_CUSTOMERS,
+  JOY_UI_CUSTOMERS,
+  DATA_GRID_CUSTOMERS,
+  DATE_TIME_CUSTOMERS,
+  CHARTS_CUSTOMERS,
+  TREE_VIEW_CUSTOMERS,
+  TOOLPAD_CUSTOMERS,
+} from './customerData';
+import SectionHeadline from '../typography/SectionHeadline';
+import GradientText from '../typography/GradientText';
 
 const LogosGrid = dynamic(() => import('./LogosGrid'));
 
-export default function CustomersLogos({
-  companies,
-}: {
-  companies:
-    | typeof CORE_CUSTOMERS
-    | typeof ADVANCED_CUSTOMERS
-    | typeof DESIGNKITS_CUSTOMERS
-    | typeof TEMPLATES_CUSTOMERS;
-}) {
-  const [clicked, setClicked] = React.useState(false);
+const PRODUCT_CATEGORIES = [
+  { label: 'Material UI', value: 'material-ui' },
+  { label: 'Base UI', value: 'base-ui' },
+  { label: 'Joy UI', value: 'joy-ui' },
+  { label: 'Data Grid', value: 'data-grid' },
+  { label: 'Date and Time Pickers', value: 'date-time' },
+  { label: 'Charts', value: 'charts' },
+  { label: 'Tree View', value: 'tree-view' },
+  { label: 'Toolpad', value: 'toolpad' },
+] as const;
 
-  function handleClick() {
-    setClicked(!clicked);
-  }
+type ProductCategory = (typeof PRODUCT_CATEGORIES)[number]['value'];
+
+// Map of product categories to their respective customers
+const PRODUCT_CUSTOMERS: Record<ProductCategory, typeof MATERIAL_UI_CUSTOMERS> = {
+  'material-ui': MATERIAL_UI_CUSTOMERS,
+  'base-ui': BASE_UI_CUSTOMERS,
+  'joy-ui': JOY_UI_CUSTOMERS,
+  'data-grid': DATA_GRID_CUSTOMERS,
+  'date-time': DATE_TIME_CUSTOMERS,
+  charts: CHARTS_CUSTOMERS,
+  'tree-view': TREE_VIEW_CUSTOMERS,
+  toolpad: TOOLPAD_CUSTOMERS,
+};
+
+export default function CustomersLogos() {
+  const [activeCategory, setActiveCategory] = React.useState<ProductCategory>('material-ui');
 
   return (
     <Section>
-      <Stack direction="row" sx={{ display: 'flex', gap: 1.5 }}>
-        <Chip label="Material UI" onClick={handleClick} color={clicked ? 'primary' : 'secondary'} />
-        <Chip label="Base UI" onClick={handleClick} color={clicked ? 'primary' : 'secondary'} />
-        <Chip label="Joy UI" onClick={handleClick} color={clicked ? 'primary' : 'secondary'} />
+      <SectionHeadline
+        alwaysCenter
+        overline="Explore our products"
+        title={
+          <Typography variant="h2" component="h2">
+            MUI&apos;s comprehensive suite of UI tools <br /> helps you
+            <GradientText>&nbsp; ship better and faster</GradientText>
+          </Typography>
+        }
+      />
+      <Stack
+        direction="row"
+        spacing={2}
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          gap: 1.5,
+          mt: 4,
+          mb: 4,
+        }}
+      >
+        {PRODUCT_CATEGORIES.map((category) => (
+          <Chip
+            key={category.value}
+            label={category.label}
+            onClick={() => setActiveCategory(category.value)}
+            sx={{
+              borderRadius: '16px',
+              '&.MuiChip-root': {
+                backgroundColor: activeCategory === category.value ? 'primary.main' : 'transparent',
+                color: activeCategory === category.value ? 'primary.contrastText' : 'text.primary',
+                '&:hover': {
+                  backgroundColor:
+                    activeCategory === category.value ? 'primary.dark' : 'action.hover',
+                },
+              },
+            }}
+          />
+        ))}
       </Stack>
       <Grid>
-        <LogosGrid data={companies} />
+        <LogosGrid data={PRODUCT_CUSTOMERS[activeCategory]} />
       </Grid>
     </Section>
   );

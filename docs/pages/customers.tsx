@@ -33,7 +33,6 @@ export default function Customers(props: InferGetStaticPropsType<typeof getStati
       <Divider />
       <main id="main-content">
         <CustomersHero />
-        <Divider />
         <Container>
           <Box
             component="ul"

@@ -2,6 +2,7 @@ const ROUTES = {
   // Marketing pages
   productCore: '/core/',
   productMaterial: '/material-ui/',
+  productBase: '/base-ui/',
   productAdvanced: '/x/',
   productToolpad: '/toolpad/',
   productTemplates: '/templates/',
@@ -10,6 +11,7 @@ const ROUTES = {
   pricing: '/pricing/',
   about: '/about/',
   blog: '/blog/',
+  customers: '/customers/',
   // Material UI doc pages
   materialDocs: '/material-ui/getting-started/',
   materialIcons: '/material-ui/material-icons/',
@@ -39,9 +41,9 @@ const ROUTES = {
   xLicensing: '/x/introduction/licensing/',
   // Data Grid doc pages
   dataGridOverview: '/x/react-data-grid/',
-  dataGridDocs: '/x/react-data-grid/quickstart/',
-  dataGridFeatures: '/x/react-data-grid/features/',
-  dataGridFeaturesComparison: '/x/react-data-grid/features/',
+  dataGridDocs: '/x/react-data-grid/getting-started/',
+  dataGridFeatures: '/x/react-data-grid/#features',
+  dataGridFeaturesComparison: '/x/react-data-grid/getting-started/#feature-comparison',
   // Date and Time Pickers doc pages
   datePickersOverview: '/x/react-date-pickers/',
   // Charts doc pages
