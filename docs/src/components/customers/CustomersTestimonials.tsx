@@ -10,12 +10,12 @@ const CustomerQuotes = dynamic(() => import('./CustomerQuotes'));
 export default function CustomersTestimonials() {
   return (
     <Box
-      sx={(theme) => ({
+      sx={{
         display: 'grid',
         m: 0,
         p: 12,
         gap: 2,
-      })}
+      }}
     >
       <SectionHeadline
         alwaysCenter
@@ -27,7 +27,7 @@ export default function CustomersTestimonials() {
             in the game
           </Typography>
         }
-        description="The world&apos;s best product teams trust MUI to deliver an unrivaled experience for both developers and users."
+        description="The world's best product teams trust MUI to deliver an unrivaled experience for both developers and users."
       />
       <CustomerQuotes />
     </Box>

@@ -49,7 +49,7 @@ export default function CustomersLogos() {
   const [activeCategory, setActiveCategory] = React.useState<ProductCategory>('material-ui');
 
   return (
-    <Section cozy={true}>
+    <Section cozy>
       <SectionHeadline
         alwaysCenter
         overline="Explore our products"

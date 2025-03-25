@@ -28,7 +28,7 @@ const QUOTES = [
   },
   {
     quote:
-      '"Material UI looks great and lets us deliver fast, thanks to their solid API design and documentation - it\'s refreshing to use a component library where you get everything you need from their site rather than Stack Overflow. We think the upcoming version, with extra themes and customizability, will make Material UI even more of a game changer. We\'re extremely grateful to the team for the time and effort spent maintaining the project."',
+      '"Material UI looks great and lets us deliver fast, thanks to their solid API design and documentation - it\'s refreshing to use a component library where you get everything you need from their site rather than Stack Overflow. We\'re extremely grateful to the team for the time and effort spent maintaining the project."',
     profile: {
       avatarSrc: 'https://avatars.githubusercontent.com/u/197016?s=58',
       avatarSrcSet: 'https://avatars.githubusercontent.com/u/197016?s=116 2x',
@@ -123,28 +123,32 @@ function Data({
         gap: 2,
       }}
     >
-      <Box>{profile.company}</Box>
-      <Box sx={{ 
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 2,
-      }}>
-        <Typography 
-          variant="body1" 
-          sx={{ 
+      <div>{profile.company}</div>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+        }}
+      >
+        <Typography
+          variant="body1"
+          sx={{
             color: 'text.secondary',
             width: '100%',
           }}
         >
           {quote}
         </Typography>
-        <Box sx={{ 
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          gap: 2,
-        }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: 2,
+          }}
+        >
           <div>
             <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
               {profile.name}
@@ -175,7 +179,7 @@ function Data({
 export default function CustomerQuotes() {
   return (
     <Box
-      sx={(theme) => ({
+      sx={{
         display: 'grid',
         gap: 0,
         gridTemplateColumns: {
@@ -204,10 +208,10 @@ export default function CustomerQuotes() {
             'one three four'
           `,
         },
-        borderRadius: "10px",
-        overflow: "hidden",
+        borderRadius: '10px',
+        overflow: 'hidden',
         backgroundColor: 'background.default',
-      })}
+      }}
     >
       {QUOTES.map((item) => (
         <Grid gridArea={item.profile.gridArea} key={item.profile.name} size={{ xs: 12, sm: 6 }}>
